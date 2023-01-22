@@ -1,0 +1,10 @@
+package com.web_service.notice_board.web.dto;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+@Getter
+@RequiredArgsConstructor
+public class HelloResponseDto {
+    private final String name;
+    private final int amount;
+}

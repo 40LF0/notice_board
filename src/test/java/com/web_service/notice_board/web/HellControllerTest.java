@@ -1,4 +1,4 @@
-package com.web_service.notice_board.controller;
+package com.web_service.notice_board.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
