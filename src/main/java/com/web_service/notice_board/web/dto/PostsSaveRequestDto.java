@@ -1,6 +1,5 @@
 package com.web_service.notice_board.web.dto;
 
-
 import com.web_service.notice_board.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;

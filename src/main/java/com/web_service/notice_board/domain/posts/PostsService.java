@@ -1,13 +1,16 @@
 package com.web_service.notice_board.domain.posts;
 
 
+import com.web_service.notice_board.web.dto.PostsListResponseDto;
 import com.web_service.notice_board.web.dto.PostsResponseDto;
 import com.web_service.notice_board.web.dto.PostsSaveRequestDto;
 import com.web_service.notice_board.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -16,6 +19,7 @@ public class PostsService {
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
+
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -33,5 +37,10 @@ public class PostsService {
                 .orElseThrow(() -> new IllegalArgumentException(
                         "There is no such post. id = " + id));
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
 }
