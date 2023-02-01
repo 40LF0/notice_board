@@ -1,5 +1,6 @@
 package com.web_service.notice_board.web;
 
+import com.web_service.notice_board.config.auth.LoginUser;
 import com.web_service.notice_board.config.auth.dto.SessionUser;
 import com.web_service.notice_board.domain.posts.PostsService;
 import com.web_service.notice_board.web.dto.PostsResponseDto;
@@ -17,11 +18,10 @@ public class IndexController {
     private final PostsService postsService;
     private final HttpSession httpSession;
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
 
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null){
             System.out.println(user.getName());
             model.addAttribute("userName", user.getName());
