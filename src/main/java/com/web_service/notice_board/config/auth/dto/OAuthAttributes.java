@@ -1,12 +1,11 @@
 package com.web_service.notice_board.config.auth.dto;
 
 import com.web_service.notice_board.domain.user.Role;
-import com.web_service.notice_board.domain.user.User;
+import com.web_service.notice_board.domain.user._User;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Getter
 public class OAuthAttributes {
@@ -41,8 +40,8 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity(){
-        return User.builder()
+    public _User toEntity(){
+        return _User.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)

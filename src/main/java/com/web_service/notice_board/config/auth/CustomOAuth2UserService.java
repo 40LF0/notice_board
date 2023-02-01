@@ -2,7 +2,7 @@ package com.web_service.notice_board.config.auth;
 
 import com.web_service.notice_board.config.auth.dto.OAuthAttributes;
 import com.web_service.notice_board.config.auth.dto.SessionUser;
-import com.web_service.notice_board.domain.user.User;
+import com.web_service.notice_board.domain.user._User;
 import com.web_service.notice_board.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Collection;
 import java.util.Collections;
 
 @RequiredArgsConstructor
@@ -36,7 +35,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .getUserNameAttributeName();
         OAuthAttributes attributes = OAuthAttributes.of(registrationId,
                 userNameAttributeName, oAuth2User.getAttributes());
-        User user = saveOrUpdate(attributes);
+        _User user = saveOrUpdate(attributes);
         httpSession.setAttribute("user",new SessionUser(user));
 
 
@@ -46,8 +45,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         );
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes){
-        User user = userRepository.findByEmail(attributes.getEmail())
+    private _User saveOrUpdate(OAuthAttributes attributes){
+        _User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
         return userRepository.save(user);

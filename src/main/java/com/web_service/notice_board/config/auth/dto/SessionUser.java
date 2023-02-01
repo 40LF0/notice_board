@@ -1,8 +1,7 @@
 package com.web_service.notice_board.config.auth.dto;
 
-import com.web_service.notice_board.domain.user.User;
+import com.web_service.notice_board.domain.user._User;
 import lombok.Getter;
-import org.hibernate.Session;
 
 @Getter
 public class SessionUser {
@@ -10,7 +9,7 @@ public class SessionUser {
     private String email;
     private String picture;
 
-    public SessionUser(User user){
+    public SessionUser(_User user){
         this.name = user.getName();
         this.email = user.getEmail();
         this.picture = user.getPicture();
