@@ -1,11 +1,11 @@
 package com.web_service.notice_board.web;
-
+import org.springframework.web.bind.annotation.*;
 import com.web_service.notice_board.domain.posts.PostsService;
 import com.web_service.notice_board.web.dto.PostsResponseDto;
 import com.web_service.notice_board.web.dto.PostsSaveRequestDto;
 import com.web_service.notice_board.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+
 
 @RequiredArgsConstructor
 @RestController
