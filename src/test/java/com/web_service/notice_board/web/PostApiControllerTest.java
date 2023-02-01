@@ -27,6 +27,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -88,13 +89,13 @@ public class PostApiControllerTest {
     @Test
     public void Posts_update() throws Exception{
         //given
-        Posts savePosts = postsRepository.save(Posts.builder()
-                        .title("title")
-                        .content("content")
-                        .author("author")
-                        .build());
+        Posts savedPosts = postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
 
-        Long updateId = savePosts.getId();
+        Long updateId = savedPosts.getId();
         String expectedTitle = "title2";
         String expectedContent = "content2";
 
@@ -102,22 +103,19 @@ public class PostApiControllerTest {
                 .title(expectedTitle)
                 .content(expectedContent)
                 .build();
+
         String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
-        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
-        mvc.perform(post(url)
+        mvc.perform(put(url)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
 
         //then
-
-
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
-
     }
 
 }
