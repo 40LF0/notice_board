@@ -27,8 +27,12 @@ public class OAuthAttributes {
     }
     public static OAuthAttributes of(String registrationId
             ,String userNameAttributes,Map<String,Object> attributes){
+        System.out.println("registerationId is "+ registrationId);
         if("naver".equals(registrationId)){
             return ofNaver("id", attributes);
+        }
+        if("kakao".equals(registrationId)){
+            return ofKakao(userNameAttributes, attributes);
         }
 
         return ofGoogle(userNameAttributes, attributes);
@@ -43,12 +47,32 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributes)
                 .build();
     }
+
+    public static OAuthAttributes ofKakao(String userNameAttributes,Map<String,Object> attributes){
+        Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
+        Map<String, Object> kakaoProfile = (Map<String, Object>) kakaoAccount.get("profile");
+
+
+        System.out.println(kakaoProfile.get("nickname"));
+        System.out.println(kakaoAccount.get("email"));
+        System.out.println(kakaoProfile.get("profile_image_url"));
+        return OAuthAttributes.builder()
+                .name((String) kakaoProfile.get("nickname"))
+                .email((String) kakaoAccount.get("email"))
+                .picture((String) kakaoProfile.get("profile_image_url"))
+                .attributes(attributes)
+                .nameAttributeKey(userNameAttributes)
+                .build();
+    }
+
     private static OAuthAttributes ofNaver(String userNameAttributes,Map<String,Object> attributes){
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
+
+
         System.out.println("ofNaver");
         return OAuthAttributes.builder()
-                .name((String) attributes.get("name"))
+                .name((String) response.get("name"))
                 .email((String) response.get("email"))
                 .picture((String) response.get("profile_image"))
                 .attributes(response)
