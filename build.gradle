@@ -1,8 +1,9 @@
 buildscript {
     ext {
-        springBootVersion = '2.7.7'
+        springBootVersion = '2.1.7.RELEASE'
     }
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -22,6 +23,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -40,11 +42,7 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-configurations {
-    integrationTestImplementation.extendsFrom implementation
-    integrationTestImplementation.extendsFrom testImplementation
-    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
-}
+
 
 test{
     useJUnitPlatform()
