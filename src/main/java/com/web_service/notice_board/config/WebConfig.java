@@ -2,6 +2,7 @@ package com.web_service.notice_board.config;
 import com.web_service.notice_board.config.auth.LoginUserArgumentResolver;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

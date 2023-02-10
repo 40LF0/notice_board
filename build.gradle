@@ -10,10 +10,7 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-repositories {
-    mavenCentral()
-    jcenter()
-}
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -45,4 +42,9 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-
+tasks.named('test'){
+    useJUnitPlatform()
+}
+jar{
+    enabled = false
+}

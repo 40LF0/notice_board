@@ -8,6 +8,7 @@ class NoticeBoardApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
