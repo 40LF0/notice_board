@@ -5,10 +5,9 @@ import com.web_service.notice_board.domain.posts.Posts;
 import com.web_service.notice_board.domain.posts.PostsRepository;
 import com.web_service.notice_board.web.dto.PostsSaveRequestDto;
 import com.web_service.notice_board.web.dto.PostsUpdateRequestDto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,7 +31,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostApiControllerTest {
 
@@ -41,7 +40,7 @@ public class PostApiControllerTest {
 
     private MockMvc mvc;
 
-    @Before
+    @BeforeEach
     public void setup(){
         mvc = MockMvcBuilders.webAppContextSetup(context)
                 .apply(springSecurity())
@@ -57,7 +56,7 @@ public class PostApiControllerTest {
     @Autowired
     private PostsRepository postsRepository;
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception{
         postsRepository.deleteAll();
     }
