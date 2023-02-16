@@ -5,6 +5,8 @@ cd $REPOSITORY
 
 echo "> Build 파일 복사"
 
+rm $REPOSITORY/zip/*plain.jar
+
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
@@ -26,13 +28,7 @@ echo "> 새 어플리케이션 배포"
 
 
 JAR_NAME=$(ls -tr $REPOSITORY/*.jar | grep jar | tail -n 1)
-echo "> 새 어플리케이션 배포 $JAR_NAME"
-if [[ "$JAR_NAME" == *plain* ]]; then
-  echo "It contains 'plain'"
-  rm $JAR_NAME;
-fi
 
-JAR_NAME=$(ls -tr $REPOSITORY/*.jar | grep jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
