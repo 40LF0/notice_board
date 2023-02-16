@@ -1,7 +1,7 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=notice_board
 
-cd $REPOSITORY/$PROJECT_NAME/
+cd $REPOSITORY
 
 echo "> Build 파일 복사"
 
@@ -26,13 +26,13 @@ echo "> 새 어플리케이션 배포"
 
 
 JAR_NAME=$(ls -tr $REPOSITORY/*.jar | grep jar | tail -n 1)
-
+echo "> 새 어플리케이션 배포 $JAR_NAME"
 if [[ "$JAR_NAME" == *plain* ]]; then
   echo "It contains 'plain'"
   rm $JAR_NAME;
-  JAR_NAME=$(ls -tr $REPOSITORY/*.jar | grep jar | tail -n 1)
 fi
 
+JAR_NAME=$(ls -tr $REPOSITORY/*.jar | grep jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
