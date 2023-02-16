@@ -40,7 +40,7 @@ deploy:
     region: ap-northeast-1
     key: freelec-springboot2-webservice.zip
     bundle_type: zip
-    application: web
+    application: web-service-group
     deployment_group: web-service-group
     wait-until-deployed: true
     on:
