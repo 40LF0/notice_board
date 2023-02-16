@@ -13,7 +13,7 @@ cache:
 
 before_install:
   - chmod +x gradlew
-script: "./gradlew clean build"
+scripts: "./gradlew clean build"
 
 before_deploy:
   - mkdir -p before-deploy
