@@ -42,7 +42,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: web-service-build
     region: ap-northeast-1
-    key: freelec-springboot2-webservice.zip
+    key: notice_board.zip
     bundle_type: zip
     application: web-service-group
     deployment_group: web-service-group
