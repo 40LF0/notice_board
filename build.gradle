@@ -20,7 +20,7 @@ apply plugin: 'io.spring.dependency-management'
 
 
 group = 'com.web_service'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
