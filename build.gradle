@@ -46,5 +46,6 @@ dependencies {
 
 }
 
-
-
+jar {
+    enabled = false
+}
