@@ -12,6 +12,10 @@ buildscript {
     }
 }
 
+tasks.named("jar") {
+    enabled = false
+}
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -46,6 +50,3 @@ dependencies {
 
 }
 
-tasks.named("jar") {
-    enabled = false
-}
