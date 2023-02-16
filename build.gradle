@@ -12,11 +12,6 @@ buildscript {
     }
 }
 
-tasks.named("jar") {
-    enabled = false
-}
-
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -49,4 +44,3 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
 }
-
