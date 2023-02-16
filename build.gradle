@@ -46,6 +46,6 @@ dependencies {
 
 }
 
-jar {
+tasks.named("jar") {
     enabled = false
 }
