@@ -4,7 +4,6 @@ import com.web_service.notice_board.config.auth.dto.OAuthAttributes;
 import com.web_service.notice_board.config.auth.dto.SessionUser;
 import com.web_service.notice_board.domain.user._User;
 import com.web_service.notice_board.domain.user.UserRepository;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

@@ -16,7 +16,7 @@ before_install:
 script: "./gradlew clean build"
 
 before_deploy:
-  - mkdir -p before-deploy #
+  - mkdir -p before-deploy
   - cp scripts/*.sh before-deploy/
   - cp appspec.yml before-deploy/
   - if [ -f build/libs/*plain.jar ]; then rm build/libs/*plain.jar; fi
