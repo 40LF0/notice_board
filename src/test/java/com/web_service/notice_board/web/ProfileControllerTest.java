@@ -22,7 +22,7 @@ public class ProfileControllerTest {
 
     @Test
     public void profile_can_access_without_certification(){
-        String expected = "oauth";
+        String expected = "default";
         ResponseEntity<String> response = restTemplate.getForEntity("/profile", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isEqualTo(expected);
